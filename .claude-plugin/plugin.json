@@ -1,0 +1,22 @@
+{
+  "name": "peach-harness-plugin",
+  "version": "1.0.0",
+  "description": "PeachSolution 하네스 시스템 — 스킬, 서브에이전트, QA 파이프라인을 통합한 Claude Code 플러그인",
+  "author": {
+    "name": "PeachSolution"
+  },
+  "repository": "https://github.com/peachSolution/peach-harness-plugin",
+  "license": "MIT",
+  "keywords": [
+    "peach",
+    "harness",
+    "backend",
+    "frontend",
+    "code-generation",
+    "qa",
+    "tdd",
+    "vue3",
+    "koa",
+    "elysia"
+  ]
+}
