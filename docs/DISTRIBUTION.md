@@ -5,19 +5,16 @@
 
 ## 결정 사항
 
-peach-harness-plugin은 **단일 플러그인**이며, `/plugin install`을 지원하기 위해 **자체 마켓플레이스를 겸한다.**
+peach-harness 저장소는 **단일 플러그인 + 자체 마켓플레이스**이다. `.claude-plugin/` 안에 marketplace.json과 plugin.json이 공존한다.
 
 ## 배경
 
 Claude Code의 `/plugin install`은 등록된 마켓플레이스에서 플러그인을 검색하는 명령이다.
 마켓플레이스 없이는 `/plugin install`로 설치할 수 없다.
 
-따라서 하나의 저장소에 두 파일을 공존시킨다:
-
-| 파일 | 역할 |
-|------|------|
-| `plugin.json` | 플러그인 정의 (스킬, 에이전트 등 컴포넌트) |
-| `marketplace.json` | 검색/설치 경로 제공 (컴포넌트 정의 없음) |
+저장소 구조 (planning-with-files 등 실제 작동하는 플러그인과 동일 패턴):
+- `.claude-plugin/marketplace.json` — 마켓플레이스 정의 (`"source": "./"`)
+- `.claude-plugin/plugin.json` — 플러그인 정의 (컴포넌트)
 
 **주의: marketplace.json에 skills 배열을 넣으면 plugin.json과 충돌한다.**
 marketplace.json은 source 경로만 지정하고, 컴포넌트 정의는 plugin.json에 위임한다.
@@ -47,10 +44,10 @@ peach-marketplace/                    ← 별도 저장소
 ## 현재 배포 구조
 
 ```
-peach-harness-plugin/
+peach-harness/
 ├── .claude-plugin/
-│   ├── plugin.json              ← 컴포넌트 정의 (스킬, 에이전트 등)
-│   └── marketplace.json         ← 검색/설치 경로 (컴포넌트 정의 없음)
+│   ├── marketplace.json             ← 마켓플레이스 정의 (source: "./")
+│   └── plugin.json                  ← 플러그인 정의
 ├── skills/
 ├── agents/
 ├── hooks/
