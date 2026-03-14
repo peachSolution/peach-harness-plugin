@@ -167,6 +167,12 @@ QA 실패 시 **Ralph Loop**(Vercel Labs) 패턴으로 구조화된 피드백을
 
 기능 100% 보존과 QA 통과가 모두 확인되어야 완료입니다.
 
+### 1. 증거 수집
+`/peach-evidence-gate` 실행 → 증거 보고서 생성
+- 판정이 ❌이면 해당 항목 수정 후 재실행
+- 판정이 ✅이면 다음 단계 진행
+
+### 2. 팀 정리
 ```
 SendMessage(shutdown_request) → 모든 팀원에게
 TeamDelete → 팀 정리
