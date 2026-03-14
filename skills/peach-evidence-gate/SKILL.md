@@ -28,7 +28,7 @@ description: 작업 완료 전 증거 수집 + 잔여 리스크 기록 게이트
 cd api && bun test
 
 # Frontend (front/ 존재 시)
-cd front && npx vitest run
+cd front && bunx vitest run
 ```
 
 결과를 기록합니다:
@@ -56,7 +56,7 @@ cd front && bun run lint:fix
 cd api && bun run build
 
 # Frontend (front/ 존재 시)
-cd front && npx vue-tsc --noEmit && bun run build
+cd front && bunx vue-tsc --noEmit && bun run build
 ```
 
 결과를 기록합니다:

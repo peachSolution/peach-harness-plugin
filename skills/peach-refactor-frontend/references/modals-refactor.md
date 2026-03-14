@@ -326,6 +326,6 @@ export const UpdateValidator = yup.object({
 ## 검증
 
 ```bash
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 cd front && bun run lint:fix
 ```

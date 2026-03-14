@@ -27,7 +27,7 @@ isolation: worktree
 | 3 | Pinia Option API | `grep "defineStore" [store]` |
 | 4 | listAction/watch | `grep "listAction\|watch(" [pages]` |
 | 5 | URL watch 적용 | route → listParams 패턴 |
-| 6 | vue-tsc 통과 | `cd front && npx vue-tsc --noEmit` |
+| 6 | vue-tsc 통과 | `cd front && bunx vue-tsc --noEmit` |
 | 7 | lint 통과 | `cd front && bun run lint:fix` |
 | 8 | build + AI Slop + 기능 보존 | `cd front && bun run build` |
 

@@ -21,7 +21,7 @@
 
 ```bash
 # v-calendar 설치
-npm install v-calendar@next
+bun add v-calendar@next
 ```
 
 ---

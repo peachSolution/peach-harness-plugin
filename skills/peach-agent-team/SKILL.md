@@ -136,7 +136,7 @@ TaskCreate:
 #### store-dev
 - `peach-gen-store` 기준으로 Pinia Store를 생성합니다.
 - Backend 타입과 인터페이스를 맞춥니다.
-- 완료 기준: `npx vue-tsc --noEmit`
+- 완료 기준: `bunx vue-tsc --noEmit`
 - 상세: `references/store-dev-agent.md` 참조
 
 #### ui-dev
@@ -144,7 +144,7 @@ TaskCreate:
 - `figma=[URL]`가 있으면 FigmaRemote MCP를 로드하여 디자인을 분석합니다.
 - UI 패턴(`ui=`)이 없으면 사용자에게 확인합니다.
 - 대상 프로젝트에 `_common/components/`가 존재하면 래퍼 컴포넌트를 우선 사용합니다.
-- 완료 기준: `npx vue-tsc --noEmit`, `bun run lint:fix`, `bun run build`
+- 완료 기준: `bunx vue-tsc --noEmit`, `bun run lint:fix`, `bun run build`
 - 상세: `references/ui-dev-agent.md` 참조
 
 #### frontend-qa
@@ -154,7 +154,7 @@ TaskCreate:
 3. Pinia Option API Store 패턴 준수
 4. `listAction`, `resetAction`, `listMovePage` 함수 구현
 5. URL watch 패턴 적용 (`route → listParams`, `route → getList`)
-6. `npx vue-tsc --noEmit` 통과
+6. `bunx vue-tsc --noEmit` 통과
 7. `bun run lint:fix` 통과
 8. `bun run build` 성공 + AI Slop 디자인 패턴 없음
 - 상세: `references/frontend-qa-agent.md` 참조

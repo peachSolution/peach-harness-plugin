@@ -44,7 +44,7 @@ description: |
 | **Mock 데이터** | 없음 | `mock/[모듈명].mock.ts` 파일에 정의 |
 | **파일 업로드** | 실서버 업로드 | Mock (FormData 로깅 + 가짜 UUID 반환) |
 | **Excel** | 실서버 다운로드 | ExcelTemplateUtil 로컬 생성 |
-| **검증 도구** | bun (vue-tsc/lint/build) | 프로젝트별 상이 (npm/bun 자동 감지) |
+| **검증 도구** | bun (vue-tsc/lint/build) | bun 기본 (`bunx` + `bun run`) |
 | **사용자** | 개발자 | 기획자 (바이브코딩) |
 
 ---
@@ -180,20 +180,19 @@ ls front/src/modules/test-data/ 2>/dev/null
 # _common 래퍼 컴포넌트 존재 여부 확인
 ls front/src/modules/_common/components/ 2>/dev/null
 
-# 빌드 도구 감지 (bun 또는 npm)
+# 빌드 도구 감지
 ls front/package.json && head -20 front/package.json
-ls front/bun.lockb 2>/dev/null && echo "BUILD_TOOL=bun" || echo "BUILD_TOOL=npm"
+ls front/bun.lockb 2>/dev/null && echo "BUILD_TOOL=bun"
 ```
 
 - **test-data 있음** → 가이드 코드 기반으로 생성
 - **test-data 없음** → references 문서 기반으로 생성
 
-#### 빌드 도구 자동 감지
+#### 빌드 도구 기준
 
 | 파일 존재 | 빌드 도구 | 검증 명령어 |
 |-----------|----------|------------|
-| `bun.lockb` | bun | `cd front && bun run lint:fix && bun run build` |
-| `package-lock.json` / `yarn.lock` | npm/yarn | `cd front && npm run type-check && npm run lint && npm run build` |
+| `bun.lockb` | bun | `cd front && bunx vue-tsc --noEmit && bun run lint:fix && bun run build` |
 
 #### _common 래퍼 우선 사용 (조건부)
 
@@ -267,16 +266,10 @@ store/[모듈명].store.ts 생성:
 ### 4단계: 검증 & 완료
 
 ```bash
-# 빌드 도구에 따라 자동 선택
-# bun 프로젝트:
-cd front && npx vue-tsc --noEmit  # 타입 체크
+# bun 프로젝트 기준
+cd front && bunx vue-tsc --noEmit  # 타입 체크
 cd front && bun run lint:fix      # 린트
 cd front && bun run build         # 빌드
-
-# npm 프로젝트:
-cd front && npm run type-check    # 타입 체크
-cd front && npm run lint          # 린트
-cd front && npm run build         # 빌드
 ```
 
 > 에러 발생 시: 원인 분석 → 코드 수정 → 다시 검증 → 통과할 때까지 반복
@@ -369,7 +362,7 @@ UI 프로토타입 생성이 완료되었습니다.
 - build: 통과
 
 **확인 방법**:
-cd front && npm run dev  # 또는 bun run dev
+cd front && bun run dev
 # 브라우저에서 http://localhost:3000/[모듈명]/list 접속
 
 **프로덕션 전환 시**:

@@ -76,7 +76,7 @@ cat front/src/modules/[모듈명]/**/*.{vue,ts}
 ### 3단계: 통합 검증
 
 ```bash
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 cd front && bun run lint:fix
 cd front && bun run build
 ```

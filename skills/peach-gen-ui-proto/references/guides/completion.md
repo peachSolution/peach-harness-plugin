@@ -2,7 +2,7 @@
 
 ## 필수 검증
 
-- [ ] 타입 체크 통과 (vue-tsc / npm run type-check)
+- [ ] 타입 체크 통과 (`bunx vue-tsc --noEmit`)
 - [ ] lint 통과
 - [ ] build 성공
 - [ ] Mock 데이터 생성 확인 (mock/[모듈명].mock.ts)
@@ -40,7 +40,7 @@
 ## 완료 후 작업
 
 1. **라우터 등록**: `front/src/router.ts`에 추가
-2. **개발 서버 실행**: `cd front && npm run dev` (또는 `bun run dev`)
+2. **개발 서버 실행**: `cd front && bun run dev`
 3. **브라우저 확인**: 화면 동작 테스트
 
 ---
@@ -58,7 +58,7 @@ Frontend UI 프로토타입 생성 완료!
 
 다음 단계:
 1. 라우터 등록
-2. 개발 서버 실행 (npm run dev)
+2. 개발 서버 실행 (`bun run dev`)
 3. 브라우저에서 확인
 
 프로덕션 전환 시:

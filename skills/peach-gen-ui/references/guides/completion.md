@@ -2,7 +2,7 @@
 
 ## 필수 검증
 
-- [ ] `npx vue-tsc --noEmit` 통과
+- [ ] `bunx vue-tsc --noEmit` 통과
 - [ ] `bun run lint:fix` 통과
 - [ ] `bun run build` 성공
 - [ ] Store 연결 확인 (import 및 사용)

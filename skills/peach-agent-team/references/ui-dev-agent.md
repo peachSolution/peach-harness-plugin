@@ -43,7 +43,7 @@ model: sonnet
 2. Figma 디자인 확인 (옵션)
 3. UI 패턴 선택 (crud/page/two-depth/infinite-scroll/select-list)
 4. 코드 생성 + 필수 패턴 적용 (listAction, watch, form submit)
-5. `cd front && npx vue-tsc --noEmit && bun run lint:fix && bun run build`
+5. `cd front && bunx vue-tsc --noEmit && bun run lint:fix && bun run build`
 6. 팀 리더에게 완료 보고 + frontend-qa 검증 요청
 
 ## 생성 파일

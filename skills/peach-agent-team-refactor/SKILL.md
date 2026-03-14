@@ -131,7 +131,7 @@ TaskCreate:
 - `peach-refactor-frontend` 기준으로 type/store/pages/modals를 정리합니다.
 - URL watch 패턴, Composition API, Pinia Option API를 강제합니다.
 - 3단계 리팩토링 순서: Type & Store → Pages → Modals
-- 완료 기준: `npx vue-tsc --noEmit`, `bun run lint:fix`, `bun run build`
+- 완료 기준: `bunx vue-tsc --noEmit`, `bun run lint:fix`, `bun run build`
 - 상세: `references/refactor-frontend-agent.md` 참조
 
 #### frontend-qa
@@ -143,7 +143,7 @@ TaskCreate:
   3. Pinia Option API Store 패턴 준수
   4. URL watch 패턴 적용 여부
   5. `listAction`, `resetAction`, `listMovePage` 함수 존재
-  6. `npx vue-tsc --noEmit` 통과
+  6. `bunx vue-tsc --noEmit` 통과
   7. `bun run lint:fix` 통과
   8. `bun run build` 성공 + AI Slop 제거 확인
 - 상세: `references/frontend-qa-agent.md` 참조

@@ -131,7 +131,7 @@ ls front/src/modules/_common/components/
 
 ```bash
 # 검증
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 cd front && bun run lint:fix
 cd front && bun run build
 ```

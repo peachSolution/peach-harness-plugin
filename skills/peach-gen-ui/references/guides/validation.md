@@ -4,7 +4,7 @@
 
 ### 1. 타입 체크
 ```bash
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 ```
 - 타입 오류 0개 확인
 - 오류 시: 타입 정의 확인, import 경로 확인

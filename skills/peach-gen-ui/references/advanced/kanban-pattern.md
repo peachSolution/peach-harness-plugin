@@ -34,7 +34,7 @@
 
 ```bash
 # vuedraggable 설치
-npm install vuedraggable@next
+bun add vuedraggable@next
 ```
 
 ---

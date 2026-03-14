@@ -21,7 +21,7 @@ model: sonnet
 
 - Pinia Option API만 허용 (Setup 스타일 금지)
 - 타입: 옵셔널(`?`), `null`, `undefined` 금지
-- 완료 기준: `npx vue-tsc --noEmit` 통과
+- 완료 기준: `bunx vue-tsc --noEmit` 통과
 - 전제조건: Backend API 완료 확인 필수
 
 ## Bounded Autonomy
@@ -38,7 +38,7 @@ model: sonnet
 1. Backend 완료 확인 + API 타입 읽기
 2. test-data 가이드 코드 참조
 3. type + store 생성
-4. `cd front && npx vue-tsc --noEmit`
+4. `cd front && bunx vue-tsc --noEmit`
 5. 팀 리더에게 완료 보고
 
 ## 생성 파일

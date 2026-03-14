@@ -221,7 +221,7 @@ Store 인터페이스와 test-data UI를 비교 분석합니다:
 ### 4단계: 검증 & 완료
 
 ```bash
-cd front && npx vue-tsc --noEmit  # 타입 체크
+cd front && bunx vue-tsc --noEmit  # 타입 체크
 cd front && bun run lint:fix      # 린트
 cd front && bun run build         # 빌드
 ```
@@ -279,7 +279,7 @@ front/src/modules/[모듈명]/
 │ □ UI 패턴 선택 완료             │
 │ □ Store 연결 확인               │
 │ □ 페이지/모달 컴포넌트 생성     │
-│ □ npx vue-tsc --noEmit 통과     │
+│ □ bunx vue-tsc --noEmit 통과     │
 │ □ bun run lint:fix 통과         │
 │ □ bun run build 성공            │
 └─────────────────────────────────┘

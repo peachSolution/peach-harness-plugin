@@ -50,7 +50,7 @@ import { VitestSetup } from '@/utils/vitest-setup.ts';
  * 🔄 흐름: Backend TDD 패턴과 완전 동기화된 통합 워크플로우
  *
  * 실행 명령어:
- * npx vitest run src/modules/[모듈명]/test/[모듈명].test.ts
+ * bunx vitest run src/modules/[모듈명]/test/[모듈명].test.ts
  */
 
 /**
@@ -302,13 +302,13 @@ finally {
 
 ```bash
 # 단일 모듈 테스트
-cd front && npx vitest run src/modules/[모듈명]/test/
+cd front && bunx vitest run src/modules/[모듈명]/test/
 
 # 전체 테스트
-cd front && npx vitest run
+cd front && bunx vitest run
 
 # 감시 모드
-cd front && npx vitest
+cd front && bunx vitest
 ```
 
 ---

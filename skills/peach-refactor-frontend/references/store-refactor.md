@@ -334,5 +334,5 @@ const result = await useApi().get<ResponseType>('/path', { params });
 ## 검증
 
 ```bash
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 ```

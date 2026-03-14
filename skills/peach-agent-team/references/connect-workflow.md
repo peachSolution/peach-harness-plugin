@@ -63,7 +63,7 @@ interface TestData {
 /gen-store [모듈명]
 
 # 3. 타입 호환성 확인
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 
 # 4. 오류 수정 (타입 불일치)
 ```

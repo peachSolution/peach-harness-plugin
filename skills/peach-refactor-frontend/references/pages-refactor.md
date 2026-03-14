@@ -291,5 +291,5 @@ const rowList = [
 ## 검증
 
 ```bash
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 ```

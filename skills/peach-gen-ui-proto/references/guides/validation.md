@@ -1,13 +1,10 @@
 # UI 검증 가이드 (프로토타입)
 
-## 빌드 도구 자동 감지
+## 빌드 도구 기준
 
 ```bash
 # bun 프로젝트 (bun.lockb 존재)
 ls front/bun.lockb 2>/dev/null && echo "BUILD_TOOL=bun"
-
-# npm 프로젝트 (package-lock.json 존재)
-ls front/package-lock.json 2>/dev/null && echo "BUILD_TOOL=npm"
 ```
 
 ## 검증 명령어
@@ -15,17 +12,9 @@ ls front/package-lock.json 2>/dev/null && echo "BUILD_TOOL=npm"
 ### bun 프로젝트 (순서대로 실행)
 
 ```bash
-cd front && npx vue-tsc --noEmit   # 타입 체크
+cd front && bunx vue-tsc --noEmit   # 타입 체크
 cd front && bun run lint:fix       # 린트
 cd front && bun run build          # 빌드
-```
-
-### npm 프로젝트 (순서대로 실행)
-
-```bash
-cd front && npm run type-check     # 타입 체크 (또는 npx vue-tsc --noEmit)
-cd front && npm run lint           # 린트 (또는 npm run lint:fix)
-cd front && npm run build          # 빌드
 ```
 
 ---
