@@ -1,9 +1,9 @@
 ---
-name: peach-gen-prd
-description: PRD 문서 생성 전문가. 대화형으로 요구사항을 수집하여 AI 최적화 PRD + DB 스키마 기본 설계 생성.
+name: peach-gen-spec
+description: Spec 문서 생성 전문가. 대화형으로 요구사항을 수집하여 AI 최적화 Spec + DB 스키마 기본 설계 생성.
 ---
 
-# PRD 생성 스킬
+# Spec 생성 스킬
 
 ## 페르소나
 
@@ -17,7 +17,7 @@ description: PRD 문서 생성 전문가. 대화형으로 요구사항을 수집
 
 ## 핵심 원칙
 
-**목적:** 대화형으로 요구사항을 수집하여 모듈 개발 PRD 생성
+**목적:** 대화형으로 요구사항을 수집하여 모듈 개발 Spec 생성
 
 - AI 친화적 구조 (토큰 최소화)
 - DB 스키마 기본 설계 포함
@@ -26,11 +26,11 @@ description: PRD 문서 생성 전문가. 대화형으로 요구사항을 수집
 
 ---
 
-## PRD 템플릿 구조
+## Spec 템플릿 구조
 
 ### 하이브리드 단일 파일 구조
 
-PRD는 **Part A(사람용 시각화) + Part B(AI용 텍스트)** 하이브리드 단일 파일 구조입니다.
+Spec는 **Part A(사람용 시각화) + Part B(AI용 텍스트)** 하이브리드 단일 파일 구조입니다.
 
 ```
 # 기능명
@@ -73,7 +73,7 @@ DATABASE_URL: 'postgresql://...'  # → PostgreSQL 모드
 DATABASE_URL: 'mysql://...'       # → MySQL 모드
 ```
 
-**판별 결과에 따라 PRD 스키마 섹션에 적용할 타입:**
+**판별 결과에 따라 Spec 스키마 섹션에 적용할 타입:**
 
 | 용도 | PostgreSQL | MySQL |
 |------|-----------|-------|
@@ -88,7 +88,7 @@ DATABASE_URL: 'mysql://...'       # → MySQL 모드
 ## 입력 방식
 
 ```
-/peach-gen-prd
+/peach-gen-spec
 ```
 
 > 대화형으로 정보를 수집하므로 파라미터 없이 실행
@@ -99,13 +99,13 @@ DATABASE_URL: 'mysql://...'       # → MySQL 모드
 
 **이 스킬:** 요구사항 정의 (What)
 - 대화형으로 요구사항 수집
-- PRD 문서 생성 (기능, DB 스키마, UI 패턴)
+- Spec 문서 생성 (기능, DB 스키마, UI 패턴)
 
 **후속 스킬:** 구현 (How)
 - **peach-gen-db**: 스키마 → SQL 마이그레이션 파일
-- **peach-gen-backend**: PRD → Backend API 코드
-- **peach-gen-store**: PRD → Frontend Store 코드
-- **peach-gen-ui**: PRD → UI 컴포넌트 코드
+- **peach-gen-backend**: Spec → Backend API 코드
+- **peach-gen-store**: Spec → Frontend Store 코드
+- **peach-gen-ui**: Spec → UI 컴포넌트 코드
 
 **중요:** 이 스킬과 references/에는 구현 상세(코드 예제, 메서드 구현)를 포함하지 않습니다. 구현은 후속 스킬의 책임입니다.
 
@@ -113,7 +113,7 @@ DATABASE_URL: 'mysql://...'       # → MySQL 모드
 
 ## 워크플로우
 
-6단계 질의응답으로 정보 수집 후 PRD 생성
+6단계 질의응답으로 정보 수집 후 Spec 생성
 
 ### 1단계: 기본 정보
 - 모듈명 (영문 케밥케이스, 예: notice-board)
@@ -177,7 +177,7 @@ DATABASE_URL: 'mysql://...'       # → MySQL 모드
 
 ---
 
-## PRD 생성 로직
+## Spec 생성 로직
 
 ### 1. 정보 수집
 AskUserQuestion으로 6단계 질의 진행 (SKILL.md 요약만 사용)
@@ -296,7 +296,7 @@ sequenceDiagram
 - `ER_RELATIONS` → 테이블 관계 정의 (예: `member ||--o{ notice_board : "작성"`)
 
 ### 3. 파일 저장
-Write tool로 지정 경로에 PRD 저장
+Write tool로 지정 경로에 Spec 저장
 
 ### 4. 완료 안내
 완료 후 안내 섹션의 템플릿 출력
@@ -408,9 +408,9 @@ flowchart LR
 ## 생성 파일 구조
 
 ```
-docs/workflow/plans/active/
-└── [개발자ID]-[YYMMDD]-p-[한글기능명].md
-    예: pdj-250106-p-공지사항-게시판.md
+docs/spec/{년}/{월}/
+└── [YYMMDD]-[한글기능명].md
+    예: 260315-공지사항-게시판.md
 ```
 
 ---
@@ -421,7 +421,7 @@ docs/workflow/plans/active/
 ┌─────────────────────────────────┐
 │ 완료 체크리스트                 │
 │ □ 6단계 질의응답 완료           │
-│ □ PRD 템플릿 로드               │
+│ □ Spec 템플릿 로드               │
 │ □ 플레이스홀더 치환 완료        │
 │ □ 다이어그램 생성 완료          │
 │ □ 파일 저장 완료                │
@@ -433,9 +433,9 @@ docs/workflow/plans/active/
 ## 완료 후 안내
 
 ```
-PRD 생성이 완료되었습니다.
+Spec 생성이 완료되었습니다.
 
-📄 파일: docs/workflow/plans/active/[파일명].md
+📄 파일: docs/spec/{년}/{월}/[파일명].md
 
 **다음 단계:**
 - `/peach-gen-db` - DB 스키마 → 마이그레이션 파일 생성
@@ -448,7 +448,7 @@ PRD 생성이 완료되었습니다.
 
 ## 예제 (선택적 참조)
 
-3가지 완전한 PRD 예제:
+3가지 완전한 Spec 예제:
 1. 공지사항 게시판 (기본 CRUD + 파일)
 2. 회원 관리 (파일 없음, Page 패턴)
 3. 제품 관리 (Excel 업로드)
@@ -461,7 +461,7 @@ PRD 생성이 완료되었습니다.
 
 - **AskUserQuestion**: 6단계 질의응답
 - **Read**: 템플릿 및 참조 문서 읽기
-- **Write**: PRD 파일 저장
+- **Write**: Spec 파일 저장
 
 ---
 
@@ -470,5 +470,5 @@ PRD 생성이 완료되었습니다.
 1. **단계별 진행**: 한 번에 모든 질문하지 말고 순차적 진행
 2. **유연한 스킵**: 명확한 경우 일부 단계 생략 가능
 3. **가이드 코드 참조**: test-data 패턴 강력 준수
-4. **PRD 순수성 유지**: PRD 문서에 후속 스킬 사용법 언급하지 않음
+4. **Spec 순수성 유지**: Spec 문서에 후속 스킬 사용법 언급하지 않음
 5. **다이어그램 필수**: Part A의 4개 다이어그램 모두 생성

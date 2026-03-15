@@ -1,10 +1,10 @@
 ---
-name: peach-ask
+name: peach-harness-help
 description: |
   하네스 시스템 안내 전문가. "어떤 스킬", "어떻게", "도움말", "help", "가이드", "어디서 시작" 키워드로 트리거. 스킬 추천, 워크플로우 안내, 시스템 개념 설명을 제공하는 읽기전용 온보딩 스킬.
 ---
 
-# peach-ask — 하네스 시스템 안내
+# peach-harness-help — 하네스 시스템 안내
 
 코드 생성 없이 질문에 답하는 **읽기전용 안내 스킬**이다.
 사용자가 무엇을 원하는지 파악하여 올바른 스킬이나 워크플로우로 안내한다.
@@ -21,10 +21,10 @@ description: |
 
 | 유형 | 예시 질문 | 참조 |
 |------|----------|------|
-| **워크플로우** | "새 모듈 만들려면?", "순서가 어떻게 돼?" | `docs/WORKFLOW.md` |
+| **워크플로우** | "새 모듈 만들려면?", "순서가 어떻게 돼?" | `docs/03-워크플로우.md` |
 | **스킬 추천** | "어떤 스킬 써야 해?", "이 상황에 맞는 스킬은?" | 아래 스킬 요약표 |
-| **시스템 이해** | "Ralph Loop이 뭐야?", "에이전트 팀이란?", "AGENTS.md가 뭐야?" | `docs/ARCHITECTURE.md` |
-| **유지보수** | "기존 기능 수정하려면?", "리팩토링 어떻게 해?" | `docs/WORKFLOW.md` + `docs/기능별설명/` 확인 |
+| **시스템 이해** | "Ralph Loop이 뭐야?", "에이전트 팀이란?", "AGENTS.md가 뭐야?" | `docs/01-아키텍처.md` |
+| **유지보수** | "기존 기능 수정하려면?", "리팩토링 어떻게 해?" | `docs/03-워크플로우.md` + `docs/기능별설명/` 확인 |
 
 ---
 
@@ -42,15 +42,15 @@ description: |
 
 유형에 따라 필요한 문서만 읽는다. 불필요한 문서는 로드하지 않는다(토큰 절약).
 
-- **워크플로우 유형** → `docs/WORKFLOW.md` 읽기
-- **시스템 이해 유형** → `docs/ARCHITECTURE.md` 읽기
+- **워크플로우 유형** → `docs/03-워크플로우.md` 읽기
+- **시스템 이해 유형** → `docs/01-아키텍처.md` 읽기
 - **스킬 추천 유형** → 아래 스킬 요약표로 답변 (문서 로드 불필요)
-- **유지보수 유형** → `docs/WORKFLOW.md` 읽기 + `docs/기능별설명/` 존재 여부 확인
+- **유지보수 유형** → `docs/03-워크플로우.md` 읽기 + `docs/기능별설명/` 존재 여부 확인
 
 ### 4단계: 답변 출력
 
 - 3줄 이내로 핵심 안내
-- 다음에 실행할 스킬 명령어 제시 (예: `/peach-gen-prd`)
+- 다음에 실행할 스킬 명령어 제시 (예: `/peach-gen-spec`)
 - 추가 참고가 필요한 문서 경로 안내
 
 ### 5단계: 후속 대응
@@ -63,8 +63,8 @@ description: |
 
 | 상황 | 스킬 |
 |------|------|
-| 어디서 시작할지 모르겠어 | `/peach-ask` (지금 여기) |
-| 새 모듈/기능 요구사항 정리 | `/peach-gen-prd` |
+| 어디서 시작할지 모르겠어 | `/peach-harness-help` (지금 여기) |
+| 새 모듈/기능 요구사항 정리 | `/peach-gen-spec` |
 | DB 테이블 설계 | `/peach-gen-db` |
 | Backend API 생성 | `/peach-gen-backend` |
 | Frontend Store 생성 | `/peach-gen-store` |
@@ -78,8 +78,7 @@ description: |
 | Frontend 리팩토링 | `/peach-refactor-frontend` |
 | 신규 기능 풀스택 팀 작업 | `/peach-agent-team` |
 | 리팩토링 팀 작업 | `/peach-agent-team-refactor` |
-| 작업 시작 전 계획 수립 | `/peach-planning-gate` |
-| 작업 완료 전 증거 수집 | `/peach-evidence-gate` (팀 스킬에서는 자동 후속 호출) |
+| 작업 완료 전 QA 검증 | `/peach-qa-gate` (팀 스킬에서는 자동 후속 호출) |
 | 세션 종료/인수인계 | `/peach-handoff` |
 
 ---

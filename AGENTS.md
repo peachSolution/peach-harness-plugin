@@ -377,8 +377,8 @@ export interface Example {
 
 | 스킬 | 용도 | 팀 역할 |
 |------|------|---------|
-| `peach-ask` | 하네스 시스템 안내 (스킬 추천, 워크플로우 안내) | - |
-| `peach-gen-prd` | PRD 문서 생성 (대화형 요구사항 수집) | - |
+| `peach-harness-help` | 하네스 시스템 안내 (스킬 추천, 워크플로우 안내) | - |
+| `peach-gen-spec` | Spec 문서 생성 (대화형 요구사항 수집) | - |
 | `peach-gen-db` | DB DDL/마이그레이션 생성 | - |
 | `peach-gen-backend` | Backend API 생성 (bun test 필수) | backend-dev |
 | `peach-gen-store` | Frontend Store 생성 (vue-tsc 필수) | store-dev |
@@ -393,17 +393,16 @@ export interface Example {
 | `peach-refactor-frontend` | Frontend 리팩토링 | refactor-frontend |
 | `peach-agent-team` | 신규 기능 팀 조율 (mode=backend/ui/fullstack) | 오케스트레이터 |
 | `peach-agent-team-refactor` | 리팩토링 팀 조율 (layer=backend/frontend/all) | 오케스트레이터 |
-| `peach-planning-gate` | 작업 시작 전 계획 수립 게이트 | - |
-| `peach-evidence-gate` | 작업 완료 전 증거 수집 게이트 (팀 스킬 완료 시 자동 후속 호출) | - |
+| `peach-qa-gate` | 작업 완료 전 증거 수집 게이트 (팀 스킬 완료 시 자동 후속 호출) | - |
 | `peach-handoff` | 세션 간 컨텍스트 인수인계 | - |
 
 ### 스킬 유형 분류
 
 | 유형 | 스킬 | 테스트 전략 |
 |------|------|-----------|
-| 능력 향상형 (4) | gen-design, gen-prd, gen-feature-docs, ask | 새 모델 시 A/B 테스트 |
+| 능력 향상형 (4) | gen-design, gen-spec, gen-feature-docs, harness-help | 새 모델 시 A/B 테스트 |
 | 선호도 인코딩형 (12) | gen-backend, gen-db, gen-store, gen-ui, gen-ui-proto, add-api, add-cron, add-print, refactor-backend, refactor-frontend, agent-team, agent-team-refactor | Eval 충실도 검증 |
-| 프로세스 게이트 (3) | planning-gate, evidence-gate, handoff | 워크플로우 품질 게이트 |
+| 프로세스 게이트 (2) | qa-gate, handoff | 워크플로우 품질 게이트 |
 
 ### 에이전트 팀원 역할
 

@@ -1,11 +1,11 @@
 ---
-name: peach-evidence-gate
+name: peach-qa-gate
 description: Use when collecting completion evidence for a PeachSolution task, either because a team skill reached its final QA pass or because a standalone task needs manual verification before completion.
 ---
 
-# 증거 수집 게이트 스킬
+# QA 검증 게이트 스킬
 
-`peach-evidence-gate`는 작업 완료 직전 증거를 수집하는 품질 게이트다.
+`peach-qa-gate`는 작업 완료 직전 증거를 수집하는 품질 게이트다.
 `peach-agent-team`, `peach-agent-team-refactor`에서는 **최종 QA 통과 후 오케스트레이터가 자동 후속 단계로 호출**하며, 팀 스킬 없이 단독 작업을 마무리할 때는 수동으로 직접 호출할 수 있다.
 
 ## 페르소나
@@ -21,7 +21,7 @@ description: Use when collecting completion evidence for a PeachSolution task, e
 ## 호출 구조
 
 - **자동 모드**: `peach-agent-team`, `peach-agent-team-refactor` 완료 직전 자동 후속 호출
-- **수동 모드**: `/peach-evidence-gate`를 직접 실행하여 단독 작업의 완료 전 검증 수행
+- **수동 모드**: `/peach-qa-gate`를 직접 실행하여 단독 작업의 완료 전 검증 수행
 
 ---
 
@@ -139,3 +139,15 @@ grep -rn "console.log" api/src/modules/ front/src/modules/ 2>/dev/null
 - [ ] 빌드 결과 수집 완료
 - [ ] 잔여 리스크 검색 완료
 - [ ] 증거 보고서 출력 완료
+
+---
+
+## 검증 보고서 저장
+
+검증 보고서를 파일로 저장합니다:
+
+```
+docs/qa/{년}/{월}/[YYMMDD]-[한글기능명].md
+```
+
+예: `docs/qa/2026/03/260315-결제기능.md`

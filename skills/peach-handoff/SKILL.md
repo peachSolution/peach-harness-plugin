@@ -56,12 +56,12 @@ git diff --stat
 
 ```bash
 # 파일 경로
-.claude/handoff/YYYY-MM-DD-{주제}.md
+docs/handoff/{년}/{월}/[YYMMDD]-[한글기능명].md
 ```
 
 **작성 규칙:**
 - 날짜는 실제 날짜 사용 (상대 날짜 금지)
-- 주제는 kebab-case로 간결하게
+- 파일명 패턴: `[YYMMDD]-[한글기능명].md` (예: `260315-결제기능.md`)
 - git status 결과를 "현재 상태" 섹션에 포함
 - Ralph Loop 이력이 있으면 반드시 기록
 
@@ -77,7 +77,7 @@ git diff --stat
 
 ```bash
 # handoff 파일 목록 (최신순)
-ls -lt .claude/handoff/*.md 2>/dev/null
+ls -lt docs/handoff/**/*.md 2>/dev/null
 ```
 
 - 파일이 여러 개인 경우 최신 파일을 기본 선택
@@ -123,7 +123,7 @@ handoff 이후 변경이 있으면 알립니다.
 ## 참조
 
 - 템플릿: `templates/handoff-template.md`
-- 저장 위치: `.claude/handoff/` (대상 프로젝트 내)
+- 저장 위치: `docs/handoff/{년}/{월}/` (대상 프로젝트 내)
 
 ---
 
