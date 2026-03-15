@@ -95,14 +95,8 @@ Frontend 테스트 설정: `VitestSetup.initializeTestEnvironment()` + `VitestSe
 ## 7. 하네스 시스템 연동
 
 ### 세션 시작
-1. `docs/handoff/` 디렉토리의 최신 파일 확인
-2. 미완료 작업이 있으면 요약 출력
-3. `git status && git branch` 확인
-
-### Handoff 사용법
-- 세션 종료 시: `/peach-handoff` → save 모드
-- 세션 시작 시: `/peach-handoff` → load 모드
-- 저장 위치: `docs/handoff/{년}/{월}/[YYMMDD]-[한글기능명].md`
+1. `git status && git branch` 확인
+2. 미완료 작업이 있으면 `docs/spec/` 또는 `git log`로 컨텍스트 파악
 
 전체 스킬 목록과 워크플로우: `/peach-help`
 ```

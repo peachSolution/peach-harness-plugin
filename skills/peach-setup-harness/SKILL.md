@@ -1,8 +1,8 @@
 ---
 name: peach-setup-harness
 description: |
-  대상 프로젝트에 피치 하네스 시스템을 설정합니다. CLAUDE.md를 최소 진입점으로 정리하고, AGENTS.md에 하네스 운영 지침(세션 시작 handoff 체크, 스킬 카탈로그 참조)을 추가합니다.
-  Use when: "하네스 설정", "프로젝트 초기 설정", "CLAUDE.md 정리", "AGENTS.md 업데이트", "세션 시작 설정", "handoff 설정" 키워드.
+  대상 프로젝트에 피치 하네스 시스템을 설정합니다. CLAUDE.md를 최소 진입점으로 정리하고, AGENTS.md에 하네스 운영 지침(세션 시작 git 체크, 스킬 카탈로그 참조)을 추가합니다.
+  Use when: "하네스 설정", "프로젝트 초기 설정", "CLAUDE.md 정리", "AGENTS.md 업데이트", "세션 시작 설정" 키워드.
 model: opus
 ---
 
@@ -14,7 +14,7 @@ CLAUDE.md는 20줄 이내 최소 진입점, AGENTS.md는 상세 규칙 원칙.
 ## 페르소나
 
 하네스 시스템 설정 전문가.
-CLAUDE.md에서 AGENTS.md와 중복되는 내용을 제거하고, 세션 시작 시 handoff 체크 지침을 추가한다.
+CLAUDE.md에서 AGENTS.md와 중복되는 내용을 제거하고, 세션 시작 시 git 체크 지침을 추가한다.
 AGENTS.md 필수 섹션을 점검하여 누락 시 보완하고, cursor rules는 삭제한다.
 
 ---
@@ -39,9 +39,6 @@ cat CLAUDE.md 2>/dev/null || echo "CLAUDE.md 없음"
 # AGENTS.md 존재 여부 + 내용
 cat AGENTS.md 2>/dev/null || echo "AGENTS.md 없음"
 
-# docs/handoff/ 디렉토리 존재 여부
-ls docs/handoff/ 2>/dev/null || echo "docs/handoff/ 없음"
-
 # 프로젝트 구조 감지
 ls -d api/ front/ 2>/dev/null || echo "모노레포 아님"
 
@@ -64,7 +61,6 @@ ls .cursorrules 2>/dev/null && echo ".cursorrules 존재" || echo ".cursorrules 
 분석 결과를 정리:
 - CLAUDE.md: 존재 여부, 현재 줄 수, AGENTS.md와 중복되는 섹션 목록
 - AGENTS.md: 존재 여부, "하네스 시스템 연동" 섹션 존재 여부
-- docs/handoff/: 존재 여부
 - 프로젝트 유형:
   - `api/ + front/` 모노레포 (기존)
   - 단독 `api/` (기존)
@@ -99,7 +95,7 @@ grep -l "하네스 시스템 연동" AGENTS.md 2>/dev/null && echo "하네스연
 **Elysia 감지 시 추가 참조:**
 | 항목 | 소스 파일 |
 |------|---------|
-| Plugin System, try-catch 금지, Auth, Bun Native API, 로깅, 주석금지, API문서화 | `peach-setup-harness/references/backend-elysia-rules.md` |
+| Plugin System, try-catch 금지, Auth, Bun Native API, 로깅, API문서화 | `peach-setup-harness/references/backend-elysia-rules.md` |
 
 **AGENTS.md 없는 새 프로젝트 (완성형 참조):**
 | 프레임워크/유형 | 소스 파일 |
@@ -130,9 +126,6 @@ grep -l "Plugin System\|try-catch 금지" AGENTS.md 2>/dev/null && echo "Elysia 
 **cursor rules 삭제 (존재하는 경우):**
 - 삭제 대상 파일/디렉토리 목록
 - 삭제 사유: "기본 지침(AGENTS.md) + 스킬 베이스로 작업 진행. cursor rules는 더 이상 사용하지 않음"
-
-**기타:**
-- docs/handoff/ 디렉토리 생성 필요 여부
 
 ### Step 4: 사용자 확인
 
@@ -170,8 +163,6 @@ grep -l "Plugin System\|try-catch 금지" AGENTS.md 2>/dev/null && echo "Elysia 
    - 루트 `.cursor/rules/` 디렉토리 삭제
    - 루트 `.cursorrules` 파일 삭제
 
-5. **docs/handoff/ 디렉토리 생성** (없는 경우)
-   - `.gitkeep` 파일 생성
 
 ### Step 6: 완료 확인
 
@@ -179,24 +170,7 @@ grep -l "Plugin System\|try-catch 금지" AGENTS.md 2>/dev/null && echo "Elysia 
 - CLAUDE.md 변경 전/후 줄 수
 - AGENTS.md 추가/업데이트된 섹션 목록
 - 삭제된 cursor rules 파일 목록
-- docs/handoff/ 생성 여부
 
-### Step 7: 변경 이력 문서화
-
-변경 사항을 `docs/handoff/` 에 기록한다:
-
-```markdown
-# 하네스 시스템 설정 이력
-
-날짜: {YYYY-MM-DD}
-실행자: peach-setup-harness
-
-## 변경 내용
-- CLAUDE.md: {전} → {후} 줄
-- AGENTS.md 추가 섹션: {목록}
-- 삭제된 cursor rules: {목록 또는 없음}
-- 프로젝트 환경: {Koa/Elysia}, {MySQL/PostgreSQL}
-```
 
 ---
 
@@ -245,7 +219,7 @@ AGENTS.md를 새로 생성하거나 보완할 때 아래 원칙을 적용한다.
 
 ## 세션 시작
 
-세션 시작 시 `docs/handoff/` 디렉토리의 최신 파일을 확인하고, 미완료 작업이 있으면 요약하세요.
+`git status && git branch`로 현재 상태를 확인하세요.
 
 ## 가이드 코드
 
@@ -275,14 +249,8 @@ AGENTS.md를 새로 생성하거나 보완할 때 아래 원칙을 적용한다.
 ## {N}. 하네스 시스템 연동
 
 ### 세션 시작 체크리스트
-1. `docs/handoff/` 디렉토리의 최신 파일 확인
-2. 미완료 작업이 있으면 요약 출력
-3. `git status && git branch` 확인
-
-### Handoff 사용법
-- 세션 종료 시: `/peach-handoff` → save 모드
-- 세션 시작 시: `/peach-handoff` → load 모드 (또는 AI가 자동 확인)
-- 저장 위치: `docs/handoff/{년}/{월}/[YYMMDD]-[한글기능명].md`
+1. `git status && git branch` 확인
+2. 미완료 작업이 있으면 `docs/spec/` 또는 `git log`로 컨텍스트 파악
 
 ### 스킬 카탈로그 참조
 전체 스킬 목록과 워크플로우는 `/peach-help`를 실행하라.
@@ -297,7 +265,6 @@ AGENTS.md를 새로 생성하거나 보완할 때 아래 원칙을 적용한다.
 - [ ] CLAUDE.md에 "세션 시작" 섹션이 포함됨
 - [ ] CLAUDE.md에서 AGENTS.md 중복 내용이 제거됨
 - [ ] AGENTS.md에 "하네스 시스템 연동" 섹션이 추가됨
-- [ ] docs/handoff/ 디렉토리가 존재함
 - [ ] 프로젝트별 고유 지침이 보존됨
 
 추가 (신규):

@@ -45,9 +45,6 @@
 - 타입: `{module-name}.type.ts`
 - 라우트: `_{module-name}.routes.ts`
 
-## 주석 금지
-- 구분선/섹션/자명한 코드 설명 주석 금지
-
 ## 품질 검증
 ```bash
 bun run dev && bun run test && bunx vue-tsc --noEmit && bun run lint:fix && bun run build
