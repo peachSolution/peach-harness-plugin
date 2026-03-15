@@ -29,6 +29,7 @@ backend-dev 완료 후 backend-qa와 store-dev를 동시 실행하여 시간을 
 
 작업:
 모듈명: [모듈명]
+모델: [model override값 또는 기본값(sonnet)]
 스키마: api/db/schema/[도메인]/[테이블].sql
 옵션: file=[Y/N], excel=[Y/N], controllerTdd=[Y/N]
 
@@ -50,6 +51,7 @@ backend-dev 완료 후 backend-qa와 store-dev를 동시 실행하여 시간을 
 
 작업:
 모듈명: [모듈명]
+모델: [model override값 또는 기본값(sonnet)]
 전제: Backend API가 완료된 상태 (api/src/modules/[모듈명]/ 존재)
 옵션: file=[Y/N], storeTdd=[Y/N]
 
@@ -69,6 +71,7 @@ backend-dev 완료 후 backend-qa와 store-dev를 동시 실행하여 시간을 
 
 작업:
 모듈명: [모듈명]
+모델: [model override값 또는 기본값(sonnet)]
 UI 패턴: [crud/page/two-depth/...]
 옵션: file=[Y/N], excel=[Y/N]
 전제: Store가 완료된 상태 (front/src/modules/[모듈명]/store/ 존재)
@@ -89,6 +92,7 @@ UI 패턴: [crud/page/two-depth/...]
 
 작업:
 모듈명: [모듈명]
+모델: [model override값 또는 기본값(sonnet)]
 Figma URL: [URL]
 UI 패턴: [crud/page/two-depth/...]
 옵션: file=[Y/N], excel=[Y/N]

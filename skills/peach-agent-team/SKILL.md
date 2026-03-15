@@ -1,5 +1,6 @@
 ---
 name: peach-agent-team
+model: opus
 description: |
   PeachSolution 신규 모듈 전체 개발을 조율하는 팀 오케스트레이터 스킬.
   "팀으로 만들어줘", "풀스택 개발", "백엔드+UI 전체 생성" 키워드로 트리거.
@@ -35,6 +36,7 @@ PeachSolution 아키텍처에서 신규 기능 개발을 조율하는 통합 팀
 /peach-agent-team [모듈명] mode=backend|ui|fullstack [옵션]
 
 # 공통 옵션
+# model=sonnet|opus|haiku  (서브에이전트 모델 override, 기본값: sonnet)
 # figma=[URL]
 # ui=crud|page|two-depth|infinite-scroll|select-list
 # file=Y
@@ -45,6 +47,33 @@ PeachSolution 아키텍처에서 신규 기능 개발을 조율하는 통합 팀
 ## Orchestration
 
 ### 0. 입력 검증
+
+#### 에이전트 팀 기능 활성화 확인
+
+아래 명령으로 `~/.claude/settings.json`에 에이전트 팀 플래그가 설정되어 있는지 확인합니다:
+
+```bash
+cat ~/.claude/settings.json | grep -i "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS"
+```
+
+설정이 없거나 `"1"`이 아니면 **즉시 중단**하고 다음 안내를 출력합니다:
+
+```
+⚠️  에이전트 팀 기능이 비활성화되어 있습니다.
+
+~/.claude/settings.json에 아래 내용을 추가한 후 Claude Code를 재시작하세요:
+
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
+}
+
+설정 가이드: https://github.com/peachSolution/peach-harness/blob/main/docs/06-에이전트팀-설정.md
+공식 문서: https://code.claude.com/docs/ko/agent-teams
+```
+
+---
 
 mode와 모듈명이 모두 지정되어야 다음 단계로 진행합니다.
 누락된 경우 **반드시** 개발자에게 질문합니다.
@@ -61,6 +90,11 @@ mode를 선택해주세요:
 ```
 모듈명을 입력해주세요 (예: notice-board, product-manage):
 ```
+
+**model 옵션:**
+- 미지정: 기본값 sonnet으로 모든 서브에이전트 실행
+- 지정 시: 모든 서브에이전트를 해당 모델로 override
+- 허용 값: sonnet, opus, haiku
 
 ### 1. 환경 확인
 
@@ -127,6 +161,7 @@ TaskCreate:
 
 각 역할의 전체 정의(페르소나, Bounded Autonomy, 워크플로우)는 `references/`에 있습니다.
 서브에이전트 생성 시 해당 파일의 전체 내용을 프롬프트에 포함합니다.
+`model=` 옵션이 지정된 경우, 각 에이전트 호출 시 model 파라미터로 전달하여 frontmatter 기본값을 override합니다.
 
 | 역할 | 참조 파일 | 핵심 스킬 |
 |------|----------|----------|
@@ -338,4 +373,7 @@ Frontend:
 
 # 전체 풀스택 생성
 /peach-agent-team product-manage mode=fullstack ui=page file=Y
+
+# opus 모델로 서브에이전트 실행
+/peach-agent-team product-manage mode=fullstack model=opus ui=page
 ```
