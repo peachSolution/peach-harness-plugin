@@ -216,7 +216,7 @@ export const use[모듈명]Store = defineStore('[모듈명]', () => {
 
 ## Bounded Autonomy (자율 적응 규칙)
 
-> AGENTS.md §5 참조
+> AGENTS.md §3 참조
 
 ### Must Follow (절대 준수)
 - Pinia Option API (Setup 스타일 금지)

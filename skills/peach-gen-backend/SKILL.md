@@ -326,7 +326,7 @@ api/src/modules/[모듈명]/
 
 ## Bounded Autonomy (자율 적응 규칙)
 
-> AGENTS.md §5 참조
+> AGENTS.md §3 참조
 
 ### Must Follow (절대 준수)
 - 모듈 경계: `_common`만 import
