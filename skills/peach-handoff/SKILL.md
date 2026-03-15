@@ -1,6 +1,12 @@
 ---
 name: peach-handoff
 description: 세션 간 컨텍스트 인수인계 스킬. "handoff", "인수인계", "세션 종료" 키워드로 트리거. save/load 두 가지 모드 지원.
+model: sonnet
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+  - Glob
 ---
 
 # 세션 인수인계 스킬

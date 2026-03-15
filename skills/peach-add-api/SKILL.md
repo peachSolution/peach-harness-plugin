@@ -1,12 +1,8 @@
 ---
 name: peach-add-api
 description: |
-  외부 REST API 호출 코드 자동 생성 스킬. axios 기반 TypeScript Service, Type 정의, Test 코드를 생성합니다.
-  다음의 경우 사용:
-  (1) 외부 API 연동 코드 생성 ("포트원 결제 API 연동", "문자 발송 API 호출")
-  (2) REST API 클라이언트 Service 생성 ("API Service 생성해줘")
-  (3) HTTP 요청/응답 타입 정의 필요
-  (4) Koa + TypeScript 백엔드 프로젝트에서 axios 기반 API 호출
+  외부 REST API 호출 코드를 생성하는 스킬. axios 기반 TypeScript Service + Type + Test.
+  "외부 API 연동", "결제 API 호출", "문자 발송 API" 키워드로 트리거.
 ---
 
 # External API 호출 코드 생성

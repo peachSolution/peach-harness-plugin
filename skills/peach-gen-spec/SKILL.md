@@ -1,6 +1,10 @@
 ---
 name: peach-gen-spec
-description: Spec 문서 생성 전문가. 대화형으로 요구사항을 수집하여 AI 최적화 Spec + DB 스키마 기본 설계 생성.
+description: |
+  신규 기능 요구사항을 대화형으로 수집하여 AI 최적화 Spec + DB 스키마 기본 설계를 생성하는 스킬.
+  "Spec 만들어줘", "신규 기능 기획", "요구사항 정리" 키워드로 트리거.
+  기존 기능 분석이 필요하면 peach-gen-feature-docs를 사용한다.
+model: opus
 ---
 
 # Spec 생성 스킬

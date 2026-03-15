@@ -1,15 +1,10 @@
 ---
 name: peach-gen-ui-proto
 description: |
-  UI 프로토타입 전용 화면 생성. Mock 데이터 기반 Store + 페이지 자동 생성.
-  트리거: "프로토타입 만들어줘", "Mock 화면", "proto UI", "프로토 화면 생성"
-
-  지원 기능:
-  (1) 기본 UI 패턴: crud(목록+모달), page, two-depth, infinite-scroll, select-list, show-more, batch-process
-  (2) 추가 옵션: excel, file
-  (3) 고급 패턴 (MCP): adv-search, calendar, kanban, mega-form, tab-list
-
-  전제조건: test-data 패턴 준수, vue-tsc + lint + build 통과
+  Backend 없이 Mock 데이터 기반 프로토타입 UI를 생성하는 스킬. Vue 3 + TypeScript + NuxtUI v4.
+  "프로토타입 만들어줘", "Mock 화면", "proto UI", "기획 화면 빠르게" 키워드로 트리거.
+  실제 API 연동 없이 기획자/디자이너 검토용 화면을 빠르게 생성한다.
+  실제 API 연동이 필요하면 peach-gen-ui를 사용한다.
 ---
 
 # Frontend UI 프로토타입 생성 스킬

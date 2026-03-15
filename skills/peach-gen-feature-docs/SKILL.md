@@ -1,6 +1,15 @@
 ---
 name: peach-gen-feature-docs
-description: Use when improving, extending, or refactoring an existing feature and you need a structured as-is context pack before planning or implementation. Also use when creating or updating docs/기능별설명 entries for an existing feature.
+description: |
+  기존 기능 개선·확장·리팩토링 전 as-is 분석 문서를 생성하는 스킬.
+  "기능 문서화", "기존 기능 분석", "as-is 정리", "docs/기능별설명 생성" 키워드로 트리거.
+  신규 기능 Spec이 필요하면 peach-gen-spec을 사용한다.
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+  - Glob
+  - Grep
 ---
 
 # peach-gen-feature-docs — 기능별 명세 생성

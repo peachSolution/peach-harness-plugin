@@ -1,6 +1,18 @@
 ---
 name: peach-qa-gate
-description: Use when collecting completion evidence for a PeachSolution task, either because a team skill reached its final QA pass or because a standalone task needs manual verification before completion.
+description: |
+  작업 완료 전 품질 증거를 수집하는 게이트.
+  test, lint, build 결과와 잔여 리스크(TODO, any 타입, console.log)를 검증하여 통과/실패 판정한다.
+  팀 스킬 완료 시 자동 호출되거나 수동으로 실행 가능.
+disable-model-invocation: true
+context: fork
+model: sonnet
+allowed-tools:
+  - Read
+  - Bash
+  - Glob
+  - Grep
+  - Write
 ---
 
 # QA 검증 게이트 스킬

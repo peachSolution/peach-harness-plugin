@@ -1,19 +1,10 @@
 ---
 name: peach-gen-ui
 description: |
-  Frontend UI 생성 전문 스킬. Vue 3 + TypeScript + Nuxt UI 기반 UI 컴포넌트 자동 생성.
-
-  트리거: "UI 만들어줘", "화면 생성", "프론트 페이지 만들어줘", "CRUD 화면", "목록 화면"
-
-  필수 워크플로우: UI 패턴 선택 질문 → 개발자 선택 → 코드 생성
-  (선택 없이 코드 생성 금지)
-
-  지원 기능:
-  (1) 기본 UI 패턴: crud(목록+모달), page, two-depth, infinite-scroll, select-list, show-more, batch-process
-  (2) 추가 옵션: excel, file
-  (3) 고급 패턴 (MCP): adv-search, calendar, kanban, mega-form, tab-list
-
-  전제조건: Store 존재, test-data 패턴 준수, vue-tsc + lint + build 통과
+  Store 기반 프로덕션 UI를 생성하는 스킬. Vue 3 + TypeScript + NuxtUI v4.
+  "UI 만들어줘", "화면 생성", "CRUD 화면", "목록 화면" 키워드로 트리거.
+  Store가 존재해야 하며 실제 API와 연동된 프로덕션 코드를 생성한다.
+  Mock 데이터 기반 프로토타입이 필요하면 peach-gen-ui-proto를 사용한다.
 ---
 
 # Frontend UI 생성 스킬

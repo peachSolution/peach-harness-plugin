@@ -141,7 +141,7 @@ bun run db:up-dev          # 마이그레이션 적용
 
 ### 기술 스택
 - Vue 3 + Vite + Pinia
-- NuxtUI v3 + TailwindCSS v4
+- NuxtUI v4 + TailwindCSS v4
 - Yup (유효성 검증)
 - Vitest (테스트)
 

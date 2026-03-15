@@ -1,6 +1,9 @@
 ---
 name: peach-agent-team
-description: Use when orchestrating PeachSolution module delivery across backend, store, UI, and QA, especially when replacing separate backend-only, UI-only, or fullstack team workflows.
+description: |
+  PeachSolution 신규 모듈 전체 개발을 조율하는 팀 오케스트레이터 스킬.
+  "팀으로 만들어줘", "풀스택 개발", "백엔드+UI 전체 생성" 키워드로 트리거.
+  mode=backend(API+Store), mode=ui(UI만), mode=fullstack(전체) 지원.
 ---
 
 # Peach Agent Team
