@@ -10,7 +10,7 @@ PeachSolution 하네스 시스템 플러그인입니다.
 
 **단일 플러그인 + 자체 마켓플레이스** 방식으로 배포한다. `.claude-plugin/` 안에 marketplace.json과 plugin.json이 공존한다.
 
-→ **@docs/DISTRIBUTION.md** 참조 (의사결정 근거, 설치/업데이트 방법)
+→ **@docs/04-배포구조.md** 참조 (의사결정 근거, 설치/업데이트 방법)
 
 ```
 peach-harness/
@@ -25,12 +25,13 @@ peach-harness/
 ## 설치
 
 ```bash
+# skills.sh (권고 - 14+ AI 도구 지원)
+npx skills add peachSolution/peach-harness --skill '*' -a claude-code
+
+# Claude Code 플러그인 (호환)
 # 1. 마켓플레이스 등록
 /plugin marketplace add peachSolution/peach-harness
 
 # 2. 플러그인 설치
 /plugin install peach-harness-plugin
-
-# skills.sh 설치 (호환)
-npx skills add peachSolution/peach-harness --skill '*' -a claude-code
 ```

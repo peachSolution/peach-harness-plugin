@@ -141,7 +141,7 @@ bun run db:up-dev          # 마이그레이션 적용
 
 ### 기술 스택
 - Vue 3 + Vite + Pinia
-- NuxtUI v3 + TailwindCSS v4
+- NuxtUI v4 + TailwindCSS v4
 - Yup (유효성 검증)
 - Vitest (테스트)
 
@@ -377,14 +377,15 @@ export interface Example {
 
 | 스킬 | 용도 | 팀 역할 |
 |------|------|---------|
-| `peach-ask` | 하네스 시스템 안내 (스킬 추천, 워크플로우 안내) | - |
-| `peach-gen-prd` | PRD 문서 생성 (대화형 요구사항 수집) | - |
+| `peach-harness-help` | 하네스 시스템 안내 (스킬 추천, 워크플로우 안내) | - |
+| `peach-gen-spec` | Spec 문서 생성 (대화형 요구사항 수집) | - |
 | `peach-gen-db` | DB DDL/마이그레이션 생성 | - |
 | `peach-gen-backend` | Backend API 생성 (bun test 필수) | backend-dev |
 | `peach-gen-store` | Frontend Store 생성 (vue-tsc 필수) | store-dev |
 | `peach-gen-ui` | Frontend UI 생성 (vue-tsc/lint/build 필수) | ui-dev |
+| `peach-gen-ui-proto` | UI 프로토타입 생성 (Mock 데이터 기반, 기획자용) | ui-dev |
 | `peach-gen-design` | 디자인 시스템 컨설팅 | ui-dev |
-| `peach-gen-feature-docs` | 기능 문서 생성 | - |
+| `peach-gen-feature-docs` | 기존 기능 개선 전 as-is 분석 문서 생성 | - |
 | `peach-add-api` | 외부 REST API 호출 코드 생성 | - |
 | `peach-add-cron` | Cron 작업 코드 생성 | - |
 | `peach-add-print` | 인쇄 전용 페이지 생성 | - |
@@ -392,17 +393,17 @@ export interface Example {
 | `peach-refactor-frontend` | Frontend 리팩토링 | refactor-frontend |
 | `peach-agent-team` | 신규 기능 팀 조율 (mode=backend/ui/fullstack) | 오케스트레이터 |
 | `peach-agent-team-refactor` | 리팩토링 팀 조율 (layer=backend/frontend/all) | 오케스트레이터 |
-| `peach-planning-gate` | 작업 시작 전 계획 수립 게이트 | - |
-| `peach-evidence-gate` | 작업 완료 전 증거 수집 게이트 | - |
+| `peach-qa-gate` | 작업 완료 전 증거 수집 게이트 (팀 스킬 완료 시 자동 후속 호출) | - |
 | `peach-handoff` | 세션 간 컨텍스트 인수인계 | - |
+| `peach-setup-harness` | 대상 프로젝트에 하네스 시스템 설정 (CLAUDE.md/AGENTS.md) | - |
 
 ### 스킬 유형 분류
 
 | 유형 | 스킬 | 테스트 전략 |
 |------|------|-----------|
-| 능력 향상형 (4) | gen-design, gen-prd, gen-feature-docs, ask | 새 모델 시 A/B 테스트 |
-| 선호도 인코딩형 (11) | gen-backend, gen-db, gen-store, gen-ui, add-api, add-cron, add-print, refactor-backend, refactor-frontend, agent-team, agent-team-refactor | Eval 충실도 검증 |
-| 프로세스 게이트 (3) | planning-gate, evidence-gate, handoff | 워크플로우 품질 게이트 |
+| 능력 향상형 (4) | gen-design, gen-spec, gen-feature-docs, harness-help | 새 모델 시 A/B 테스트 |
+| 선호도 인코딩형 (12) | gen-backend, gen-db, gen-store, gen-ui, gen-ui-proto, add-api, add-cron, add-print, refactor-backend, refactor-frontend, agent-team, agent-team-refactor | Eval 충실도 검증 |
+| 프로세스 게이트 (3) | qa-gate, handoff, setup-harness | 워크플로우 품질 게이트 |
 
 ### 에이전트 팀원 역할
 
@@ -411,10 +412,17 @@ export interface Example {
 | backend-dev | Backend API 개발 | peach-gen-backend |
 | backend-qa | Backend QA 검증 | 검증 전용 |
 | store-dev | Frontend Store 개발 | peach-gen-store |
-| ui-dev | Frontend UI + 디자인 (FigmaRemote MCP) | peach-gen-ui + peach-gen-design |
+| ui-dev | Frontend UI + 디자인 (FigmaRemote MCP) | peach-gen-ui + peach-gen-ui-proto + peach-gen-design |
 | frontend-qa | Frontend QA 검증 | 검증 전용 |
 | refactor-backend | Backend 리팩토링 | peach-refactor-backend |
 | refactor-frontend | Frontend 리팩토링 | peach-refactor-frontend |
+
+### PR 코드리뷰 워크플로우
+
+PeachSolution 규칙 검증은 QA 에이전트 + qa-gate가 담당합니다.
+PR 생성 전 범용 코드리뷰가 필요하면 built-in 스킬을 사용합니다:
+- `/requesting-code-review` — PR diff 기반 코드리뷰 요청
+- `/receiving-code-review` — 리뷰 피드백 처리
 
 ---
 
@@ -454,6 +462,30 @@ export interface Example {
 - QA 에이전트(backend-qa, frontend-qa)는 **읽기전용**으로 실행한다.
 - `isolation: worktree` 옵션으로 독립 작업 트리에서 검증한다.
 - 구현 에이전트와 컨텍스트를 공유하지 않아 확증 편향을 방지한다.
+
+### 에이전트 모델 정책
+
+- 팀 스킬(peach-agent-team, peach-agent-team-refactor)은 `model: opus` 권장
+- 서브에이전트는 기본 `model: sonnet`으로 실행
+
+| 옵션 | 동작 |
+|------|------|
+| (미지정) | frontmatter 기본값 사용 (sonnet) |
+| model=opus | 모든 서브에이전트를 opus로 실행 |
+| model=haiku | 모든 서브에이전트를 haiku로 실행 |
+
+### 자기완결적 스킬 원칙
+
+팀 스킬은 `agents/` 디렉토리 없이도 완전하게 동작해야 한다. (멀티 AI 도구 지원)
+
+- **`agents/*.md`**: Source of truth. Claude Code 네이티브 서브에이전트가 직접 참조한다.
+- **`skills/*/references/*-agent.md`**: 팀 스킬 자기완결성을 위한 복사본. `agents/`를 인식하지 못하는 AI 도구에서 사용된다.
+- **에이전트 정의 변경 시**: `agents/*.md`와 해당 `references/*-agent.md` 양쪽을 모두 업데이트한다.
+
+| 파일 | 역할 | 사용 주체 |
+|------|------|----------|
+| `agents/backend-dev.md` | Source of truth | Claude Code, Codex CLI |
+| `skills/peach-agent-team/references/backend-dev-agent.md` | 복사본 | Cursor, Copilot 등 |
 
 ---
 

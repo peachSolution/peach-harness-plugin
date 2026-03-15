@@ -1,13 +1,8 @@
 ---
 name: peach-add-cron
 description: |
-  주기적 실행 Cron 작업 코드 자동 생성 스킬. node-cron 기반 TypeScript Service, Cron 로그 기록, server.ts 통합 코드를 생성합니다.
-  다음의 경우 사용:
-  (1) 주기적 실행 작업 생성 ("매일 새벽 2시에 로그 정리", "1분마다 SMS 결과 조회")
-  (2) 백그라운드 처리 스케줄러 생성 ("데이터 동기화 크론 작업")
-  (3) 적응형 스케줄러 구현 (데이터 양에 따라 주기 자동 조정)
-  (4) Cron 로그 기록 필요 (common_log_cron 테이블)
-  (5) Koa + TypeScript 백엔드에서 node-cron 사용
+  주기적 실행 Cron 작업 코드를 생성하는 스킬. node-cron 기반 TypeScript Service + 로그 기록 + server.ts 통합.
+  "크론 작업", "주기적 실행", "스케줄러 생성" 키워드로 트리거.
 ---
 
 # Cron 작업 코드 생성

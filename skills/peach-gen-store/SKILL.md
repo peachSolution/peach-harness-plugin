@@ -91,7 +91,7 @@ Backend API 타입과 test-data Store를 비교 분석합니다:
 
 ```bash
 # 타입 체크
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 
 # 테스트 실행 (있는 경우)
 cd front && bun test src/modules/[모듈명]/test/
@@ -240,7 +240,7 @@ export const use[모듈명]Store = defineStore('[모듈명]', () => {
 ┌─────────────────────────────────────────────────────────────────┐
 │  ✅ 완료 체크리스트                                              │
 │                                                                 │
-│  □ npx vue-tsc --noEmit 통과 (필수)                             │
+│  □ bunx vue-tsc --noEmit 통과 (필수)                             │
 │  □ TDD 테스트 통과 (storeTdd=Y인 경우만)                        │
 │                                                                 │
 │  위 조건 모두 통과해야 완료!                                     │

@@ -1,20 +1,9 @@
 ---
 name: peach-gen-design
 description: |
-  디자인 시스템 컨설팅 + 코드 생성 전문 스킬.
-
-  트리거: "디자인 상담", "UI 트렌드", "컴포넌트 디자인", "색상 추천", "디자인 시스템"
-
-  워크플로우: 도메인 파악 → 트렌드 기반 제안 → 피드백 반복 → 합의 후 코드 생성
-
-  지원 영역:
-  (1) 색상 시스템: 닥터팔레트 브랜드 컬러, Semantic Colors
-  (2) 타이포그래피: Pretendard, 폰트 스케일
-  (3) 레이아웃: 사이드바 220px, 헤더 64px
-  (4) 컴포넌트: Button, Card, Modal, Form, Table, Navigation, Badge, Dropdown, List
-  (5) 접근성: WCAG 2.2 AA 기준
-
-  기술 스택: Vue 3 + TailwindCSS v4 + NuxtUI v3
+  디자인 시스템 컨설팅 + Vue 3 컴포넌트 코드 생성 스킬.
+  "디자인 상담", "UI 트렌드", "색상 추천", "디자인 시스템" 키워드로 트리거.
+  도메인 파악 → 제안 → 피드백 → 코드 생성 순으로 진행.
 ---
 
 # 디자인 시스템 컨설팅 스킬
@@ -131,7 +120,7 @@ ls front/src/modules/_common/components/
 
 ```bash
 # 검증
-cd front && npx vue-tsc --noEmit
+cd front && bunx vue-tsc --noEmit
 cd front && bun run lint:fix
 cd front && bun run build
 ```

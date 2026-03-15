@@ -61,7 +61,7 @@ FOREIGN KEY (member_seq) REFERENCES member(member_seq)
 
 ### 방식 1: PRD 문서 경로
 ```
-PRD 경로: docs/workflow/plans/active/pdj-251225-p-notice-board.md
+PRD 경로: docs/spec/{년}/{월}/pdj-251225-p-notice-board.md
 ```
 
 ### 방식 2: 테이블 직접 정의
